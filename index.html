@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+
+            background-image: url('https://tse4.mm.bing.net/th?id=OIP.WtCqBbP6oGBb8hCqbi86WgHaEK&pid=Api&P=0&h=180');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+
+        .container {
+            margin: 6px 6px;
+            position: absolute;
+        }
+
+        .container h1 {
+            text-align: center;
+            font-size: 70px;
+            color: red;
+            text-shadow: 5px 5px 5px white;
+            font-family: cursive;
+
+        }
+
+        .form {
+            /* border: 2px solid black; */
+            background-color: rgb(58, 255, 189);
+            margin: 50px 410px;
+            padding: 5px 5px;
+            box-shadow: 10px 12px 34px rgb(60, 49, 49);
+        }
+
+        .form:hover {
+            box-shadow: 40px 22px 64px rgb(60, 49, 49);
+
+        }
+
+        form {
+            margin: 30px 30px;
+        }
+
+        label {
+            font-size: 25px;
+            margin: 40px;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        input {
+            height: 30px;
+            width: 330px;
+            margin-left: 25px;
+
+        }
+
+        #btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            margin-left: 230px;
+            padding: 5px;
+            font-size: 20px;
+            background-color: aquamarine;
+            border-radius: 9px;
+        }
+
+        #btn:hover {
+            background: linear-gradient(to bottom right, rgb(142, 200, 220), rgb(149, 197, 194));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <div class="form">
+            <form id="contactForm">
+
+                <label for="name">Name : </label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="Email">Email : </label>
+                <input type="text" id="email" name="email" required><br><br>
+
+                <label for="subject">Subject : </label>
+                <input type="text" id="subject" name="subject" required style="margin-left: 10px;"><br><br>
+
+                <label for="message">Comments : </label>
+                <textarea name="message" id="message" cols="40" rows="10"></textarea><br><br>
+
+                <button id="btn">Send</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click', function (e) {
+            e.preventDefault()
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var subject = document.getElementById("subject").value;
+            var message = document.getElementById("message").value;
+            var body = 'name: ' + name + '<br/> email: ' + email + '<br/> subject: ' + subject + '<br/> message: ' + message;
+
+
+            Email.send({
+                SecureToken: "1910c49f-257d-4f95-9c29-c772f3ef8bb6",
+                To: 'ritikraj0271@gmail.com',
+                From: "ritikraj8873@gmail.com",
+                Subject: "Contact Message",
+                Body: body
+            }).then(
+                message => alert(message)
+            );
+        })
+    </script>
+</body>
+
+</html>
